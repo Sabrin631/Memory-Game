@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cozy Autumn Memory Game</title>
+    <link rel="stylesheet" href="Styles.css">
+    <link rel="icon" type="image/png" href="assets/leaaf.png">
+
+</head>
+<body>
+    <h1> 🍂 Cozy Autumn Memory Game 🍁 </h1>
+    <div class="controls">
+        <button id="restart">Restart</button>
+        <button id="mute">🔈Mute</button>
+        
+    </div>
+
+<audio id="bg-music" src="assets/piano.mp3" autoplay loop></audio>
+
+    <div class="game-board"></div>
+    <div id="win-message" class="hidden">
+        <h2>You did it!</h2>
+        <p>All pairs matched - GOOD JOB</p>
+    </div>
+    
+</body>
+<script src="App.js"></script>
+</html>
