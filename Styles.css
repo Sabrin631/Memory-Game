@@ -1,3 +1,4 @@
+/* Keep your global reset and body styles */
 * {
   margin: 0;
   padding: 0;
@@ -24,9 +25,9 @@ h1 {
 }
 
 .controls{
-    display: flex;
-    gap: 15px;
-    margin-bottom: 25px;
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
 }
 
 button{
@@ -42,21 +43,23 @@ button{
 }
 
 button:hover{
-    background-color: #8C6931;
-    transform: translateY(-2px);
+  background-color: #8C6931;
+  transform: translateY(-2px);
 }
 
+/* Responsive game board */
 .game-board{
-    display: grid;
-    grid-template-columns: repeat(4, 100px);
-    gap: 15px;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* responsive columns */
+  gap: 15px;
+  justify-content: center;
+  width: 100%;
+  max-width: 450px; /* prevent it from being too wide on large screens */
 }
-
 
 .card {
-  width: 100px;
-  height: 100px;
+  width: 100%;      /* full width of the grid cell */
+  aspect-ratio: 1;  /* keeps it square automatically */
   background-color: #FFF2E1;
   border-radius: 10px;
   display: flex;
@@ -74,48 +77,64 @@ button:hover{
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 #win-message {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(255, 242, 225, 0.95); 
-    padding: 30px 50px;
-    border-radius: 15px;
-    text-align: center;
-    font-size: 1.8rem;
-    color: #5C4033;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    z-index: 1000;
-    display: none; 
-    animation: fadeIn 0.8s ease forwards;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 242, 225, 0.95); 
+  padding: 30px 50px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 1.8rem;
+  color: #5C4033;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  z-index: 1000;
+  display: none; 
+  animation: fadeIn 0.8s ease forwards;
 }
 
 #win-message.show {
-    display: block;
-    opacity: 1;
+  display: block;
+  opacity: 1;
 }
+
 .leaf {
-    position: fixed;
-    top: -50px;
-    z-index: 9999;
-    pointer-events: none;
-    animation-name: fall;
-    animation-timing-function: linear;
-    animation-iteration-count: 1;
+  position: fixed;
+  top: -50px;
+  z-index: 9999;
+  pointer-events: none;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
 }
 
 @keyframes fall {
-    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
 }
-
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translate(-50%, -60%); }
-    to { opacity: 1; transform: translate(-50%, -50%); }
+  from { opacity: 0; transform: translate(-50%, -60%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
 }
 
+/* Optional: adjust font-size for smaller screens */
+@media (max-width: 400px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 8px 14px;
+  }
+
+  #win-message {
+    font-size: 1.4rem;
+    padding: 20px 30px;
+  }
+}
